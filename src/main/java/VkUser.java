@@ -1,7 +1,7 @@
 public class VkUser {
-    public final String FirstName;
-    public final String LastName;
-    public final Integer Id;
+    private final String FirstName;
+    private final String LastName;
+    private final Integer Id;
 
     public VkUser(Integer id, String firstName, String lastName) {
         FirstName = firstName;
@@ -9,16 +9,25 @@ public class VkUser {
         Id = id;
     }
 
+    public String getFullName() {
+        return this.FirstName + " " + this.LastName;
+    }
+
+    public Integer getId() {
+        return this.Id;
+    }
+
+
     @Override
     public int hashCode() {
-        return Id.hashCode() * FirstName.hashCode() * LastName.hashCode();
+        return Id.hashCode();
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof VkUser) {
             VkUser user = (VkUser) obj;
-            return user.Id.equals(Id) && user.FirstName.equals(FirstName) && user.LastName.equals(LastName);
+            return user.Id.equals(Id);
         }
         return false;
     }

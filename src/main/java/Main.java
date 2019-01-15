@@ -3,11 +3,12 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        VKSession vkSession = new VKSession();
+        VKSession.Initialize();
         try {
-            vkSession.collectFriendsOfCurrentUser();
-            HashMap<VkUser, List<VkUser>> friendToMutual = vkSession.getFriendsOfFriends();
-            new Visualizer(vkSession).visualize(friendToMutual);
+            VKSession.collectFriendsOfCurrentUser();
+            HashMap<VkUser, List<VkUser>> friendToMutual = VKSession.getFriendsOfFriends();
+            //HashMap<VkUser, List<Integer>> friendToFriends = vkSession.getFriendsOfFriendsNonMutal();
+            new Visualizer().visualize(friendToMutual);
         } catch (Exception e) {
             e.printStackTrace();
         }
